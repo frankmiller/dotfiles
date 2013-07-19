@@ -19,10 +19,10 @@ filetype plugin indent on
 
 """ neobundle
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/dotfiles/vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#rc(expand('~/dotfiles/vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -56,7 +56,9 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/vimfiler'
 
 " other
-NeoBundle 'vim-scripts/perforce'
+NeoBundle 'vim-scripts/genutils'
+"NeoBundle 'vim-scripts/perforce'
+NeoBundle 'pydave/vim-perforce'
 NeoBundle 'vim-scripts/bufexplorer.zip'
 
 " Local plugins
@@ -83,9 +85,9 @@ endif
 set path=.
 set path+=,,
 
-"set listchars=tab:>-,trail:-,extends:>,precedes:<
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set showbreak=↪
+set listchars=tab:>-,trail:-,extends:>,precedes:<
+"set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+"set showbreak=↪
 
 " listchar=trail is not as flexible, use the below to highlight trailing
 " whitespace. Don't do it for unite windows or readonly files
@@ -98,7 +100,7 @@ augroup MyAutoCmd
   autocmd BufWinLeave * if &modifiable && &ft!='unite' | call clearmatches() | endif
 augroup END
 
-set spelllang=en spellfile=~/.vim/spellfile.latin1.add
+set spelllang=en spellfile=~/dotfiles/vim/spellfile.latin1.add
 
 " cursorline is weird in diff mode
 if &diff
