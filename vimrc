@@ -18,6 +18,10 @@ filetype plugin indent on
 
 
 """ neobundle
+
+" this is needed to use github at stj
+let g:neobundle_default_git_protocol='http'
+
 if has('vim_starting')
   set runtimepath+=~/dotfiles/vim/bundle/neobundle.vim/
 endif
@@ -60,6 +64,7 @@ NeoBundle 'vim-scripts/genutils'
 "NeoBundle 'vim-scripts/perforce'
 NeoBundle 'pydave/vim-perforce'
 NeoBundle 'vim-scripts/bufexplorer.zip'
+NeoBundle 'vim-scripts/vimwiki'
 
 " Local plugins
 execute 'NeoBundleLocal' '~/dotfiles/vim/local'
@@ -224,12 +229,15 @@ let loaded_perforce=1
 " lid
 let LID_Jump_To_Match = 0
 
+" vimwiki
+let g:vimwiki_list = [{'path': '~/notes/w/', 'syntax': 'markdown', 'ext': '.md'},
+                    \ {'path': '~/notes/p/', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Custom commands
 
 autocmd BufEnter *.miki setfiletype miki
-autocmd BufEnter *.mdwn setfiletype ikiwiki
+"autocmd BufEnter *.mdwn setfiletype ikiwiki
 autocmd BufEnter Jamfile,Jamroot set ft=conf nocindent nowrap
 autocmd BufEnter *.cpp,*.cxx,*.txx,*.h,*.hpp,*.hxx,*.cl set ft=cpp
 "autocmd BufEnter *.d set ft=d
