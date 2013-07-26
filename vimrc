@@ -84,7 +84,9 @@ else
   syntax enable
   set background=dark
   "colorscheme solarized
-  colorscheme noctu
+  "colorscheme noctu
+  "colorscheme jellybeans
+  colorscheme frank
 endif
 
 set path=.
