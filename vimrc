@@ -13,6 +13,7 @@ set guioptions-=L         " No scrollbar
 set guioptions-=r         " No scrollbar
 set guioptions-=R         " No scrollbar
 set guicursor=a:blinkon0  " Disable blinking cursor
+:set diffopt+=vertical
 
 filetype plugin indent on
 
@@ -75,7 +76,13 @@ NeoBundleCheck
 """ more settings
 
 if has("gui_running")
+
+if has("win32")
+  set guifont=Courier_New:h12:cANSI
+else
   set guifont=Monospace\ 14
+endif
+
   syntax on
   set background=dark
   colorscheme frank
@@ -234,6 +241,7 @@ let LID_Jump_To_Match = 0
 " vimwiki
 let g:vimwiki_list = [{'path': '~/notes/w/', 'syntax': 'markdown', 'ext': '.md'},
                     \ {'path': '~/notes/p/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_conceallevel = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Custom commands
@@ -261,6 +269,9 @@ autocmd FileType tex set spell et sts=2 sw=2 tw=80 nocindent lbr fo=tqln grepprg
 " frank cpp style
 "autocmd FileType cpp set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={1s,f1s,:0,l1,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 
+" sjm workmate style
+"autocmd FileType cpp set list noet ts=3 sts=3 sw=3 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+
 " sjm cpp style
 autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
@@ -279,6 +290,7 @@ autocmd FileType help :hi Ignore guifg=yellow
 
 autocmd FileType make set noet list nocindent nowrap
 autocmd FileType cmake set nowrap et sts=2 sw=2 tw=80 fo=cqro nospell nocindent
+autocmd FileType vimwiki set spell list et ts=4 sts=4 sw=4 tw=72 lbr ai
 
 "autocmd FileType nerdtree set ignorecase incsearch
 
