@@ -98,7 +98,7 @@ set listchars=tab:>-,trail:-,extends:>,precedes:<
 
 " listchar=trail is not as flexible, use the below to highlight trailing
 " whitespace. Don't do it for unite windows or readonly files
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=DarkBlue guibg=DarkBlue
 match ExtraWhitespace /\s\+$/
 augroup MyAutoCmd
   autocmd BufWinEnter * if &modifiable && &ft!='unite' | match ExtraWhitespace /\s\+$/ | endif
@@ -234,6 +234,8 @@ let LID_Jump_To_Match = 0
 " vimwiki
 let g:vimwiki_list = [{'path': '~/notes/w/', 'syntax': 'markdown', 'ext': '.md'},
                     \ {'path': '~/notes/p/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_conceallevel = 0
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Custom commands
@@ -261,8 +263,11 @@ autocmd FileType tex set spell et sts=2 sw=2 tw=80 nocindent lbr fo=tqln grepprg
 " frank cpp style
 "autocmd FileType cpp set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={1s,f1s,:0,l1,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 
+" sjm workmate style
+autocmd FileType cpp set list noet ts=3 sts=3 sw=3 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+
 " sjm cpp style
-autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+"autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
 
 " alternate style
