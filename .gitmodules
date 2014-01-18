@@ -13,3 +13,9 @@
 [submodule "vim/bundle/ack.vim"]
 	path = vim/bundle/ack.vim
 	url = http://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/genutils"]
+	path = vim/bundle/genutils
+	url = http://github.com/vim-scripts/genutils
+[submodule "vim/bundle/vim-perforce"]
+	path = vim/bundle/vim-perforce
+	url = http://github.com/pydave/vim-perforce.git
