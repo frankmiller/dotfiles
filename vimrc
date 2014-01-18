@@ -151,8 +151,11 @@ let g:vimwiki_list = [{'path': '~/notes/w/', 'syntax': 'markdown', 'ext': '.md'}
 let g:vimwiki_conceallevel = 0
 
 
-"vim-airline
-set laststatus=2
+""vim-airline
+"set laststatus=2
+"let g:airline_left_sep  = '▶'
+"let g:airline_right_sep = '◀'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Custom commands
