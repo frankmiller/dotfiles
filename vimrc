@@ -32,15 +32,17 @@ execute pathogen#infect('bundle/{}', 'local/{}')
 
 if has("gui_running")
 
-if has("win32")
-  set guifont=Courier_New:h12:cANSI
-else
-  set guifont=Monospace\ 14
-endif
+  if has("win32")
+    set guifont=Courier_New:h12:cANSI
+  else
+    set guifont=Monospace\ 14
+  endif
 
   syntax on
   set background=dark
-  colorscheme frank
+  "colorscheme badwolf
+  colorscheme molokai
+  "colorscheme frank
   "colorscheme jellybeans
 else
   syntax enable
@@ -60,7 +62,7 @@ set showbreak=↪
 
 " listchar=trail is not as flexible, use the below to highlight trailing
 " whitespace. Don't do it for readonly files
-highlight ExtraWhitespace ctermbg=DarkBlue guibg=DarkBlue
+highlight ExtraWhitespace ctermbg=darkblue guibg=darkblue
 match ExtraWhitespace /\s\+$/
 augroup MyAutoCmd
   autocmd BufWinEnter * if &modifiable | match ExtraWhitespace /\s\+$/ | endif
@@ -72,9 +74,9 @@ augroup END
 set spelllang=en spellfile=~/dotfiles/vim/spellfile.latin1.add
 
 " cursorline is weird in diff mode
-if &diff
-   set nocursorline
-endif
+"if &diff
+"   set nocursorline
+"endif
 
 " sane regex
 "nnoremap / /\v
@@ -150,7 +152,12 @@ let g:vimwiki_list = [{'path': '~/notes/w/', 'syntax': 'markdown', 'ext': '.md'}
 let g:vimwiki_conceallevel = 0
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""vim-airline
+"set laststatus=2
+"let g:airline_left_sep  = '▶'
+"let g:airline_right_sep = '◀'
+
+
 """ Custom commands
 
 autocmd BufEnter *.miki setfiletype miki
