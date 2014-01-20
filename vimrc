@@ -40,7 +40,8 @@ if has("gui_running")
 
   syntax on
   set background=dark
-  colorscheme badwolf
+  "colorscheme badwolf
+  colorscheme molokai
   "colorscheme frank
   "colorscheme jellybeans
 else
