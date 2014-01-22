@@ -20,13 +20,6 @@ filetype plugin indent on
 """ pathogen
 execute pathogen#infect('bundle/{}', 'local/{}')
 
-"NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'vim-scripts/genutils'
-""NeoBundle 'vim-scripts/perforce'
-"NeoBundle 'pydave/vim-perforce'
-"NeoBundle 'vim-scripts/bufexplorer.zip'
-"NeoBundle 'vim-scripts/vimwiki'
-
 
 """ more settings
 
@@ -39,10 +32,14 @@ if has("gui_running")
   endif
 
   syntax on
-  set background=dark
-  "colorscheme badwolf
-  colorscheme molokai
   "colorscheme frank
+  colorscheme miller
+  "colorscheme badwolf
+  "colorscheme molokai
+  "colorscheme ir_black
+  "colorscheme ir_dark
+  "colorscheme wombat
+  "colorscheme zenburn
   "colorscheme jellybeans
 else
   syntax enable
@@ -62,7 +59,8 @@ set showbreak=↪
 
 " listchar=trail is not as flexible, use the below to highlight trailing
 " whitespace. Don't do it for readonly files
-highlight ExtraWhitespace ctermbg=darkblue guibg=darkblue
+"highlight ExtraWhitespace ctermbg=darkblue guibg=darkblue
+hi link ExtraWhitespace DiffAdd
 match ExtraWhitespace /\s\+$/
 augroup MyAutoCmd
   autocmd BufWinEnter * if &modifiable | match ExtraWhitespace /\s\+$/ | endif
@@ -111,6 +109,12 @@ function! LoadErrors()
 endfunction
 command! Err call LoadErrors()
 
+nmap ,e :NERDTreeFind<CR>
+"nmap ,a :
+nmap ,f :CtrlP<CR>
+nmap ,b :CtrlPBuffer<CR>
+nmap ,t :CtrlPTag<CR>
+nmap ,c :CtrlPBufTag<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ modules
@@ -119,7 +123,6 @@ command! Err call LoadErrors()
 let NERDTreeQuitOnOpen=1
 let NERDTreeWinPos='right'
 let NERDTreeWinSize=45
-nmap ,e :NERDTreeFind<CR>
 hi def link NERDTreeRO Comment
 
 

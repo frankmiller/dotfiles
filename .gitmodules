@@ -28,3 +28,6 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = http://github.com/bling/vim-airline.git
+[submodule "vim/bundle/ctags.vim"]
+	path = vim/bundle/ctags.vim
+	url = http://github.com/vim-scripts/ctags.vim.git
