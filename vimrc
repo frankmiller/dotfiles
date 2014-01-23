@@ -110,7 +110,7 @@ endfunction
 command! Err call LoadErrors()
 
 nmap ,e :NERDTreeFind<CR>
-"nmap ,a :
+nmap ,a :AckFromSearch<CR>
 nmap ,f :CtrlP<CR>
 nmap ,b :CtrlPBuffer<CR>
 nmap ,t :CtrlPTag<CR>
@@ -187,10 +187,10 @@ autocmd FileType tex set spell et sts=2 sw=2 tw=80 nocindent lbr fo=tqln grepprg
 "autocmd FileType cpp set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={1s,f1s,:0,l1,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 
 " sjm workmate style
-autocmd FileType cpp set list noet ts=3 sts=3 sw=3 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+"autocmd FileType cpp set list noet ts=3 sts=3 sw=3 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 
 " sjm cpp style
-"autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
 
 " alternate style

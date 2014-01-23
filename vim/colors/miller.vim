@@ -1,5 +1,5 @@
 "
-" Based on ir_black and badwolf
+" Hacked together from ir_black, badwolf, and jellybeans
 "
 "
 " background gradient
@@ -36,7 +36,7 @@ let colors_name = "miller"
 
 " General colors
 hi Normal           guifg=#f6f3e8     guibg=#101010     gui=NONE
-hi NonText          guifg=#242321     guibg=#000000     gui=NONE
+hi NonText          guifg=#35322d     guibg=NONE        gui=NONE
 
 hi Cursor           guifg=#101010     guibg=#FFFFFF     gui=NONE
 hi CursorLine       guifg=NONE        guibg=#000000     gui=NONE
@@ -45,7 +45,7 @@ hi CursorColumn     guifg=NONE        guibg=#000000     gui=NONE
 hi DiffAdd          guifg=NONE        guibg=#45413b     gui=NONE " added line
 hi DiffChange       guifg=NONE        guibg=#242321     gui=NONE " changed line
 hi DiffText         guifg=NONE        guibg=#45413b     gui=NONE " changed text in a changed line
-hi! link DiffDelete NonText
+hi DiffDelete       guifg=#242321     guibg=#000000     gui=NONE
 
 hi LineNr           guifg=#3D3D3D     guibg=#101010     gui=NONE
 
@@ -56,17 +56,17 @@ hi StatusLineNC     guifg=#404040     guibg=#202020     gui=NONE
 hi Folded           guifg=#a0a8b0     guibg=#384048     gui=NONE
 hi FoldColumn       guifg=#a0a8b0     guibg=#384048     gui=NONE
 hi Title            guifg=#f6f3e8     guibg=NONE        gui=bold
-hi Visual           guifg=NONE        guibg=#3b4145     gui=NONE
+hi Visual           guifg=NONE        guibg=#404040     gui=NONE
 
 hi SpecialKey       guifg=#45413b     guibg=#101010     gui=NONE
 
 hi WildMenu         guifg=green       guibg=yellow      gui=NONE
 hi PmenuSbar        guifg=#101010     guibg=#FFFFFF     gui=NONE
-hi Ignore           guifg=blue        guibg=red         gui=NONE
+hi Ignore           guifg=#242321     guibg=#101010     gui=NONE
 
 hi Error            guifg=NONE        guibg=NONE        gui=undercurl
-hi ErrorMsg         guifg=#FFFFFF     guibg=#FF6C60     gui=BOLD
-hi WarningMsg       guifg=#FFFFFF     guibg=#FF6C60     gui=BOLD
+hi ErrorMsg         guifg=#FFFFFF     guibg=#CC2020     gui=BOLD
+hi WarningMsg       guifg=#000000     guibg=#CCCC20     gui=BOLD
 hi LongLineWarning  guifg=NONE        guibg=#371F1C     gui=underline
 
 " Message displayed in lower left, such as --INSERT--
@@ -77,6 +77,8 @@ hi MatchParen       guifg=#f6f3e8     guibg=#857b6f     gui=BOLD
 hi Pmenu            guifg=#f6f3e8     guibg=#444444     gui=NONE
 hi PmenuSel         guifg=#101010     guibg=#cae682     gui=NONE
 hi Search           guifg=NONE        guibg=#2F2F00     gui=underline
+
+hi SpellCap         guifg=NONE        guibg=NONE        gui=NONE
 
 " Syntax highlighting
 hi Comment          guifg=#7C7C7C     guibg=NONE        gui=NONE
@@ -92,8 +94,9 @@ hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE
 
 hi Identifier       guifg=#C6C5FE     guibg=NONE        gui=NONE
 hi Function         guifg=#FFD2A7     guibg=NONE        gui=NONE
-hi Type             guifg=#FFFFB6     guibg=NONE        gui=NONE
+hi Type             guifg=#FFB964     guibg=NONE        gui=NONE
 hi Statement        guifg=#6699CC     guibg=NONE        gui=NONE
+hi StorageClass     guifg=#c59f6f     guibg=NONE        gui=NONE
 
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE
 hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE
@@ -109,7 +112,6 @@ hi link Include         PreProc
 hi link Define          PreProc
 hi link Macro           PreProc
 hi link PreCondit       PreProc
-hi link StorageClass    Type
 hi link Structure       Type
 hi link Typedef         Type
 hi link Tag             Special
