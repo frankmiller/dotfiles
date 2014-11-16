@@ -1,29 +1,19 @@
 
 shopt -s checkwinsize
 
-DO_GITSTRING=false
-if [ -f ~/e/conf/bash/git-completion.bash ]; then
-  . ~/e/conf/bash/git-completion.bash
-  DO_GITSTRING=true
-  #GIT_PS1_SHOWDIRTYSTATE=true
-  #GIT_PS1_SHOWUNTRACKEDFILES=true
-fi
+source ~/dotfiles/git/git-prompt.sh
 
 function prompt_command
   {
-  let fillsize=${COLUMNS}
+  let fillsize=${COLUMNS}-1
   FILL=""
-  while [ "$fillsize" -gt "0" ] 
-  do 
+  while [ "$fillsize" -gt "0" ]
+  do
     FILL="${FILL}="
     let fillsize=${fillsize}-1
   done
 
-  GITSTRING=""
-  if [ "$DO_GITSTRING" = "true" ]; then
-    GITSTRING=`__git_ps1 "(%s)"`
-  fi
-
+  GITSTRING=`__git_ps1 "(%s)"`
 
   # Change the window title of X terminals
   # taken from /etc/bash/bashrc

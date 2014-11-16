@@ -19,15 +19,15 @@
 [submodule "vim/bundle/vim-perforce"]
 	path = vim/bundle/vim-perforce
 	url = http://github.com/pydave/vim-perforce.git
-[submodule "vim/bundle/badwolf"]
-	path = vim/bundle/badwolf
-	url = http://github.com/sjl/badwolf.git
 [submodule "vim/bundle/ctrlp.vim"]
 	path = vim/bundle/ctrlp.vim
 	url = http://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = http://github.com/bling/vim-airline.git
 [submodule "vim/bundle/ctags.vim"]
 	path = vim/bundle/ctags.vim
 	url = http://github.com/vim-scripts/ctags.vim.git
+[submodule "vim/bundle/vim-bufsurf"]
+	path = vim/bundle/vim-bufsurf
+	url = https://github.com/ton/vim-bufsurf.git
+[submodule "vim/bundle/railscasts"]
+	path = vim/bundle/railscasts
+	url = https://github.com/dhruvasagar/vim-railscasts-theme.git

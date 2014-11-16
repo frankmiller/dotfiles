@@ -32,13 +32,16 @@ if has("gui_running")
   endif
 
   syntax on
+  set background=dark
+  "colorscheme wombat
+  colorscheme twilight
+  "colorscheme railscasts
+  "colorscheme miller
   "colorscheme frank
-  colorscheme miller
   "colorscheme badwolf
   "colorscheme molokai
   "colorscheme ir_black
   "colorscheme ir_dark
-  "colorscheme wombat
   "colorscheme zenburn
   "colorscheme jellybeans
 else
@@ -87,7 +90,7 @@ set spelllang=en spellfile=~/dotfiles/vim/spellfile.latin1.add
 """ commands
 
 noremap <Space> <PageDown>
-nmap <C-Tab>      <C-^>
+"nmap <C-Tab>      <C-^>
 
 " stop from hitting F1 by accident
 map <F1> <Esc>
@@ -131,8 +134,12 @@ let g:alternateNoDefaultAlternate=1
 let g:alternateSearchPath = 'reg:|/src|/inc|,reg:|/inc|/src|'
 "let g:alternateSearchPath .= ',reg:|/lib/\([^/]*\)/src|/include/\1|'
 "let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/lib/\1/src|'
-let g:alternateSearchPath .= ',reg:|/libs/\([^/]*\)/src|/include/\1|'
-let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/libs/\1/src|'
+"let g:alternateSearchPath .= ',reg:|/libs/\([^/]*\)/src|/include/\1|'
+"let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/libs/\1/src|'
+
+" stupid windows
+let g:alternateSearchPath .= ',reg:|\\lib\\\([^/]*\)\\src|\\include\\\1|'
+let g:alternateSearchPath .= ',reg:|\\include\\\([^/]*\)|\\lib\\\1\\src|'
 
 let g:alternateExtensions_h   = "c,cpp,cxx,tpp,txx,cc,CC"
 let g:alternateExtensions_cpp = "hpp,h"
@@ -160,6 +167,29 @@ let g:vimwiki_conceallevel = 0
 "let g:airline_left_sep  = '▶'
 "let g:airline_right_sep = '◀'
 
+" vim-bufsurf
+nmap <silent> <A-Left> :BufSurfBack<CR>
+nmap <silent> <A-Right> :BufSurfForward<CR>
+
+""" Code style
+function SetDwsStyle()
+	autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://:,://
+endfunction
+
+function SetWorkmateStyle()
+	autocmd FileType cpp set list noet ts=4 sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+endfunction
+
+function SetLlvmStyle()
+	autocmd FileType cpp set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
+endfunction
+
+command! Sdws  call SetDwsStyle()
+command! Swm   call SetWorkmateStyle()
+command! Sllvm call SetLlvmStyle()
+
+"call SetLlvmStyle()
+call SetDwsStyle()
 
 """ Custom commands
 
@@ -170,7 +200,6 @@ autocmd BufEnter *.cpp,*.cxx,*.txx,*.h,*.hpp,*.hxx,*.cl set ft=cpp
 "autocmd BufEnter *.d set ft=d
 autocmd BufEnter *.dox set syntax=cpp.doxygen tw=80 nocindent lbr fo=tqln
 autocmd BufEnter *SSDD.txt set syntax=cpp.doxygen spell et sts=2 tw=80 nocindent ai lbr fo=tqln
-autocmd BufEnter *.html,*.htm set spell nocindent autoindent lbr
 autocmd BufEnter *.tex set ft=tex
 autocmd BufEnter SConstruct,SConscript set ft=python
 autocmd BufEnter *.m set ft=octave
@@ -183,15 +212,10 @@ autocmd BufEnter *.pro set ft=make
 
 autocmd FileType tex set spell et sts=2 sw=2 tw=80 nocindent lbr fo=tqln grepprg=grep\ -nH\ $*
 
+autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
+
 " frank cpp style
 "autocmd FileType cpp set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={1s,f1s,:0,l1,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
-
-" sjm workmate style
-"autocmd FileType cpp set list noet ts=3 sts=3 sw=3 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
-
-" sjm cpp style
-autocmd FileType cpp set list et sts=4 sw=4 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
-autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
 
 " alternate style
 "autocmd FileType cpp set list nowrap noet sts=3 sw=3 tw=80 fo=cqro cindent cino={1s,f1s,:0,l1,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
@@ -199,6 +223,7 @@ autocmd FileType perl set list et sts=4 sw=4 nowrap tw=0
 autocmd FileType d set list et sts=2 sw=2 nowrap tw=80 fo=cqro cindent cino={:0,g0,c0,(0,(s,m1 comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://!,://
 
 autocmd FileType mail set spell et sts=2 tw=72 ai lbr fo=tln
+autocmd FileType html set spell nocindent autoindent lbr et sts=2 sw=2 list
 
 autocmd FileType bzr       set spell et sts=2 tw=58 nocindent lbr fo=tqln
 autocmd FileType gitcommit set spell et sts=2 tw=72 nocindent lbr fo=tqln
@@ -206,8 +231,21 @@ autocmd FileType gitcommit set spell et sts=2 tw=72 nocindent lbr fo=tqln
 autocmd FileType help :hi Ignore guifg=yellow
 
 autocmd FileType make set noet list nocindent nowrap
-autocmd FileType cmake set nowrap et sts=2 sw=2 tw=80 fo=cqro nospell nocindent
-autocmd FileType vimwiki set spell list et ts=4 sts=4 sw=4 tw=72 lbr ai
+autocmd FileType cmake set nowrap et sts=4 sw=4 tw=80 fo=cqro nospell nocindent
+autocmd FileType vimwiki call SetWikiOptions()
+
+"autocmd Syntax c,cpp,vim,xml,html,xhtml,perl setlocal foldmethod=syntax
+"autocmd BufReadPost *.cpp,*.cxx,*.txx,*.h,*.hpp,*.hxx,*.cl :normal zR
+
+function SetWikiOptions()
+	set spell list et ts=4 sts=4 sw=4 tw=72 lbr ai
+	syntax region codeBlock start='^    \|\t' end='$' oneline keepend
+	hi def link codeBlock String
+	set formatoptions+=tnro
+	set formatoptions-=cq
+	set formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\|^[-*+]\\s\\+
+endfunction
+
 
 "autocmd FileType nerdtree set ignorecase incsearch
 
