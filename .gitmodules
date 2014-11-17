@@ -31,3 +31,6 @@
 [submodule "vim/bundle/railscasts"]
 	path = vim/bundle/railscasts
 	url = https://github.com/dhruvasagar/vim-railscasts-theme.git
+[submodule "vim/bundle/vim-sneak"]
+	path = vim/bundle/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
