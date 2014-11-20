@@ -3,7 +3,6 @@
 set nocompatible
 set hidden                " keep changes in buffers in memory even when not visible
 set hlsearch              " highlight search term
-set cursorline            " highlight cursor line
 set mousehide             " Hide the mouse when typing text
 set showcmd               " show half entered commands
 set ruler                 " show line and column number of cursor position
@@ -24,6 +23,7 @@ execute pathogen#infect('bundle/{}', 'local/{}')
 """ more settings
 
 if has("gui_running")
+  set cursorline " highlight cursor line
 
   if has("win32")
     set guifont=Courier_New:h12:cANSI
@@ -48,6 +48,8 @@ if has("gui_running")
 else
   syntax enable
   set background=dark
+  "colorscheme zenburn
+  "colorscheme twilight
   "colorscheme solarized
   "colorscheme noctu
   "colorscheme jellybeans
@@ -135,12 +137,15 @@ let g:alternateNoDefaultAlternate=1
 let g:alternateSearchPath = 'reg:|/src|/inc|,reg:|/inc|/src|'
 "let g:alternateSearchPath .= ',reg:|/lib/\([^/]*\)/src|/include/\1|'
 "let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/lib/\1/src|'
-"let g:alternateSearchPath .= ',reg:|/libs/\([^/]*\)/src|/include/\1|'
-"let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/libs/\1/src|'
 
-" stupid windows
-let g:alternateSearchPath .= ',reg:|\\lib\\\([^/]*\)\\src|\\include\\\1|'
-let g:alternateSearchPath .= ',reg:|\\include\\\([^/]*\)|\\lib\\\1\\src|'
+if has("win32")
+  " stupid windows
+  let g:alternateSearchPath .= ',reg:|\\lib\\\([^/]*\)\\src|\\include\\\1|'
+  let g:alternateSearchPath .= ',reg:|\\include\\\([^/]*\)|\\lib\\\1\\src|'
+else
+  let g:alternateSearchPath .= ',reg:|/libs/\([^/]*\)/src|/include/\1|'
+  let g:alternateSearchPath .= ',reg:|/include/\([^/]*\)|/libs/\1/src|'
+endif
 
 let g:alternateExtensions_h   = "c,cpp,cxx,tpp,txx,cc,CC"
 let g:alternateExtensions_cpp = "hpp,h"
@@ -213,7 +218,7 @@ call SetDwsStyle()
 autocmd BufEnter *.miki setfiletype miki
 "autocmd BufEnter *.mdwn setfiletype ikiwiki
 autocmd BufEnter Jamfile,Jamroot set ft=conf nocindent nowrap
-autocmd BufEnter *.cpp,*.cxx,*.txx,*.h,*.hpp,*.hxx,*.cl set ft=cpp
+autocmd BufEnter *.cpp,*.cxx,*.txx,*.h,*.hpp,*.hxx,*.cl,*.cpp#\d\+,*.h#\d\+ set ft=cpp
 "autocmd BufEnter *.d set ft=d
 autocmd BufEnter *.dox set syntax=cpp.doxygen tw=80 nocindent lbr fo=tqln
 autocmd BufEnter *SSDD.txt set syntax=cpp.doxygen spell et sts=2 tw=80 nocindent ai lbr fo=tqln
@@ -226,6 +231,8 @@ autocmd BufEnter .bash_* set ft=sh
 autocmd BufEnter *CMakeLists.txt set ft=cmake
 autocmd BufEnter *.pro set ft=make
 "autocmd BufEnter *.txt setfiletype miki
+
+autocmd FileType sh set list et sts=4 sw=4 nowrap tw=80
 
 autocmd FileType tex set spell et sts=2 sw=2 tw=80 nocindent lbr fo=tqln grepprg=grep\ -nH\ $*
 
