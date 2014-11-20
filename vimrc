@@ -33,10 +33,11 @@ if has("gui_running")
 
   syntax on
   set background=dark
+  colorscheme miller
+  "colorscheme base16-tomorrow
+  "colorscheme twilight
   "colorscheme wombat
-  colorscheme twilight
   "colorscheme railscasts
-  "colorscheme miller
   "colorscheme frank
   "colorscheme badwolf
   "colorscheme molokai
