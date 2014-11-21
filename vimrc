@@ -12,6 +12,7 @@ set guioptions-=L         " No scrollbar
 set guioptions-=r         " No scrollbar
 set guioptions-=R         " No scrollbar
 set guicursor=a:blinkon0  " Disable blinking cursor
+set cursorline            " highlight cursor line
 :set diffopt+=vertical
 
 filetype plugin indent on
@@ -22,39 +23,20 @@ execute pathogen#infect('bundle/{}', 'local/{}')
 
 """ more settings
 
+set background=dark
 if has("gui_running")
-  set cursorline " highlight cursor line
-
+  syntax on
   if has("win32")
     set guifont=Courier_New:h12:cANSI
   else
     set guifont=Monospace\ 14
   endif
-
-  syntax on
-  set background=dark
-  colorscheme miller
-  "colorscheme base16-tomorrow
-  "colorscheme twilight
-  "colorscheme wombat
-  "colorscheme railscasts
-  "colorscheme frank
-  "colorscheme badwolf
-  "colorscheme molokai
-  "colorscheme ir_black
-  "colorscheme ir_dark
-  "colorscheme zenburn
-  "colorscheme jellybeans
 else
   syntax enable
-  set background=dark
-  "colorscheme zenburn
-  "colorscheme twilight
-  "colorscheme solarized
-  "colorscheme noctu
-  "colorscheme jellybeans
-  colorscheme frank
 endif
+
+let g:seoul256_background = 233
+colorscheme seoul256
 
 set path=.
 set path+=,,
@@ -78,9 +60,9 @@ augroup END
 set spelllang=en spellfile=~/dotfiles/vim/spellfile.latin1.add
 
 " cursorline is weird in diff mode
-"if &diff
-"   set nocursorline
-"endif
+if &diff
+   set nocursorline
+endif
 
 " sane regex
 "nnoremap / /\v
