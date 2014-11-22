@@ -151,9 +151,10 @@ let g:vimwiki_conceallevel = 0
 
 
 ""vim-airline
-"set laststatus=2
-"let g:airline_left_sep  = '▶'
-"let g:airline_right_sep = '◀'
+set laststatus=2
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
+let g:airline#extensions#whitespace#enabled = 0
 
 " vim-bufsurf
 nmap <silent> <A-Left> :BufSurfBack<CR>
