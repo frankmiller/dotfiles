@@ -25,15 +25,14 @@ function prompt_command
       echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\033\\"
       ;;
   esac
+
+  YELLOW="\[\033[1;33m\]"
+  NOCOLOR="\[\033[0m\]"
+  PS1="\n${YELLOW}${FILL}${NOCOLOR}\n[\w] ${GITSTRING}\n[\u@\h]\$ "
+
+  # clean up environment
+  unset YELLOW NOCOLOR
   }
 
 PROMPT_COMMAND=prompt_command
-
-YELLOW="\[\033[1;33m\]"
-NOCOLOR="\[\033[0m\]"
-
-PS1="\n${YELLOW}\${FILL}${NOCOLOR}\n[\w] \${GITSTRING}\n[\u@\h]\$ "
-
-# clean up environment
-unset YELLOW NOCOLOR
 

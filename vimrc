@@ -13,7 +13,12 @@ set guioptions-=r         " No scrollbar
 set guioptions-=R         " No scrollbar
 set guicursor=a:blinkon0  " Disable blinking cursor
 set cursorline            " highlight cursor line
-:set diffopt+=vertical
+set number                " line numbers
+set timeoutlen=1000       " timeout on mappings
+set ttimeoutlen=10        " timeout on key codes. This eliminates the delay entering normal mode with ESC
+
+set diffopt+=vertical
+set clipboard^=unnamed
 
 filetype plugin indent on
 
