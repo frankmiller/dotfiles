@@ -79,6 +79,8 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ commands
 
+imap <C-l> <Esc>
+
 noremap <Space> <PageDown>
 "nmap <C-Tab>      <C-^>
 
