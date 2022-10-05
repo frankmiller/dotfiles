@@ -4,7 +4,7 @@ xterm.vt100.locale: true
 xterm.vt100.scrollBar: false
 
 xterm*faceName: DejaVu Sans Mono Book
-xterm*faceSize: 11
+xterm*faceSize: 14
 
 #xterm.vt100.reverseVideo: true
 
